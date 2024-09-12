@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-zA-Z0-9]+$",
+      {
+        "message": "Classname should be in a camelCase notation!",
+        "severity": "error"
+      }
+    ],
+    "property-no-vendor-prefix": null,
+    "media-feature-range-notation": "prefix"
+  }
+}
