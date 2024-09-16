@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-test('App', async ({ page }) => {
-  await page.goto('/');
-  await expect(page).toHaveTitle(/Profinance/);
+test.describe('App', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
+
+  test('App', async ({ page }) => {
+    await expect(page).toHaveTitle(/Profinance/);
+  });
 });
