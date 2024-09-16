@@ -7,7 +7,10 @@ import { LegalLinks } from './LegalLinks';
 
 export const Sidebar = () => {
   return (
-    <Box component='aside' sx={{ pt: 2, pb: 2, pl: 2, pr: 2, maxWidth: '20rem' }}>
+    <Box
+      component='aside'
+      sx={{ pt: 2, pb: 2, pl: 2, pr: 2, maxWidth: '20rem', height: '100%', overflowY: 'auto' }}
+    >
       <Box
         sx={{
           mb: 1,

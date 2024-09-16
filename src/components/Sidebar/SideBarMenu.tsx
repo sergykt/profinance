@@ -1,6 +1,6 @@
 import { MenuList, MenuItem, Stack, Typography } from '@mui/material';
+import { PiNotebookFill } from 'react-icons/pi';
 import { HiDocumentMinus } from 'react-icons/hi2';
-import { ImBook } from 'react-icons/im';
 import { IoMdSettings } from 'react-icons/io';
 import { MdEditDocument } from 'react-icons/md';
 import { RiArrowDownSFill } from 'react-icons/ri';
@@ -9,7 +9,7 @@ const menuList = [
   { title: 'Настройки', icon: <IoMdSettings /> },
   { title: 'Внесение данных', icon: <MdEditDocument /> },
   { title: 'Отчеты', icon: <HiDocumentMinus /> },
-  { title: 'База знаний', icon: <ImBook /> },
+  { title: 'База знаний', icon: <PiNotebookFill /> },
 ];
 
 export const SidebarMenu = () => {
@@ -30,7 +30,7 @@ export const SidebarMenu = () => {
             sx={{ alignItems: 'center', gap: 1.5, pt: 0.5, pb: 0.5, width: '100%' }}
           >
             {item.icon}
-            <Typography sx={{ mr: 'auto', pr: 1 }}>{item.title}</Typography>
+            <Typography sx={{ mr: 'auto' }}>{item.title}</Typography>
             <RiArrowDownSFill color='#4e5977' />
           </Stack>
         </MenuItem>

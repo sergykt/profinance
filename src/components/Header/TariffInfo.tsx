@@ -15,7 +15,7 @@ export const TariffInfo = ({ label }: TariffInfoProps) => {
         alignItems: 'center',
         gap: 1,
         backgroundColor: '#eef5ff',
-        borderRadius: 4,
+        borderRadius: 3,
       }}
     >
       <FaCalendarAlt color='#287eff' />
