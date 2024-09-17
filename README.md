@@ -1,46 +1,59 @@
 # Profinance
 
-## Description
+## Описание
 
-Profinance app
+Веб-приложение с интерактивной таблицей. Оно позволяет пользователям просматривать, фильтровать и редактировать данные в реальном времени.
 
-## Usage
+### Стек
 
-Install all required packages:
+- **React:** Фреймворк для создания пользовательского интерфейса.
+- **Material UI:** Библиотека компонентов для стилизации интерфейса.
+- **Material-React-Table:** Open-soure библиотека, созданная на основе MUI и TanStack Table.
+- **Vite:** Инструмент для сборки и разработки.
+- **Vitest:** Фреймворк для написания и запуска unit-тестов.
+- **Playwright:** Инструмент для автоматического тестирования пользовательского интерфейса (E2E).
+
+## Демонстрация
+
+[https://profinance-one.vercel.app/](https://profinance-one.vercel.app/)
+
+## Установка
+
+Установить все необходимые пакеты:
 
 ```bash
 npm install
 ```
 
-Run the application:
+Запустить приложение:
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:5173 to view it in the browser.
+Откройте http://localhost:5173 чтобы увидеть страницу в браузере.
 
-## Scripts
+## Скрипты
 
-Build the application:
+Сборка приложения:
 
 ```bash
 npm run build
 ```
 
-Launch the unit-test runner:
+Запуск unit-тестов:
 
 ```bash
 npm run test:unit
 ```
 
-Launch the e2e-test runner:
+Запуск E2E тестов:
 
 ```bash
 npm run test:e2e
 ```
 
-Launch the linter:
+Линтинг:
 
 ```bash
 npm run lint
