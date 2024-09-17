@@ -23,6 +23,16 @@ export const Catalog = () => {
         accessorKey: 'barcode',
         header: 'Баркод',
         Footer: 'Итого:',
+        Edit: ({ cell, row, column, table }) => (
+          <CustomNumberInput
+            cell={cell}
+            row={row}
+            column={column}
+            table={table}
+            name='barcode'
+            placeholder='Баркод'
+          />
+        ),
       },
       {
         accessorKey: 'product_brand',
@@ -37,7 +47,14 @@ export const Catalog = () => {
         header: 'Количество',
         Footer: ({ table }) => getTotal(table, 'product_quantity'),
         Edit: ({ cell, row, column, table }) => (
-          <CustomNumberInput cell={cell} row={row} column={column} table={table} />
+          <CustomNumberInput
+            cell={cell}
+            row={row}
+            column={column}
+            table={table}
+            name='product_quantity'
+            placeholder='Количество'
+          />
         ),
       },
       {
@@ -46,7 +63,14 @@ export const Catalog = () => {
         filterVariant: 'range',
         Footer: ({ table }) => getTotal(table, 'price'),
         Edit: ({ cell, row, column, table }) => (
-          <CustomNumberInput cell={cell} row={row} column={column} table={table} />
+          <CustomNumberInput
+            cell={cell}
+            row={row}
+            column={column}
+            table={table}
+            name='price'
+            placeholder='Цена'
+          />
         ),
       },
     ],
@@ -99,7 +123,6 @@ export const Catalog = () => {
     enableDensityToggle: false,
     enableGlobalFilter: true,
     enableColumnActions: false,
-    enableRowVirtualization: true,
     enableFilterMatchHighlighting: false,
     enableFilters: false,
     enableSortingRemoval: false,
@@ -116,6 +139,8 @@ export const Catalog = () => {
           backgroundColor: '#f5f5f5',
         },
       },
+      // @ts-expect-error Можно добавить такой пропс
+      'data-testid': 'catalog-table',
     },
     muiTablePaperProps: {
       sx: {

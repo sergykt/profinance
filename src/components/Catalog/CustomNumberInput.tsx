@@ -12,10 +12,12 @@ interface CustomNumberInputProps<T extends MRT_RowData> {
   row: MRT_Row<T>;
   column: MRT_Column<T, unknown>;
   table: MRT_TableInstance<T>;
+  name: string;
+  placeholder: string;
 }
 
 export const CustomNumberInput = <T extends MRT_RowData>(props: CustomNumberInputProps<T>) => {
-  const { cell, row, column, table } = props;
+  const { cell, row, column, table, name, placeholder } = props;
 
   const initialValue = cell.getValue();
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -27,5 +29,13 @@ export const CustomNumberInput = <T extends MRT_RowData>(props: CustomNumberInpu
     table.setEditingCell(null);
   };
 
-  return <Input autoFocus onBlur={onBlur} defaultValue={initialValue} />;
+  return (
+    <Input
+      autoFocus
+      onBlur={onBlur}
+      defaultValue={initialValue}
+      placeholder={placeholder}
+      name={name}
+    />
+  );
 };
