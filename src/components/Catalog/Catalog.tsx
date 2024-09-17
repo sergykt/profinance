@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import { useCallback, useMemo, useState } from 'react';
 import {
   MaterialReactTable,
@@ -8,7 +9,9 @@ import {
 import { Stack } from '@mui/material';
 import { CatalogFilters } from './CatalogFilters';
 import { CatalogActions } from './CatalogActions';
-import { CatalogColumns } from './types';
+import { CustomNumberInput } from './CustomNumberInput';
+import { getTotal } from './helpers';
+import { type CatalogColumns } from './types';
 
 export const Catalog = () => {
   const [data, setData] = useState<CatalogColumns[]>([]);
@@ -32,25 +35,19 @@ export const Catalog = () => {
       {
         accessorKey: 'product_quantity',
         header: 'Количество',
-        Footer: ({ table }) => {
-          const totalQuantity = table.getSortedRowModel().rows.reduce((sum, row) => {
-            return sum + row.original.product_quantity;
-          }, 0);
-
-          return totalQuantity.toFixed(2);
-        },
+        Footer: ({ table }) => getTotal(table, 'product_quantity'),
+        Edit: ({ cell, row, column, table }) => (
+          <CustomNumberInput cell={cell} row={row} column={column} table={table} />
+        ),
       },
       {
         accessorKey: 'price',
         header: 'Цена',
         filterVariant: 'range',
-        Footer: ({ table }) => {
-          const totalSum = table.getFilteredRowModel().rows.reduce((sum, row) => {
-            return sum + row.original.price;
-          }, 0);
-
-          return totalSum.toFixed(2);
-        },
+        Footer: ({ table }) => getTotal(table, 'price'),
+        Edit: ({ cell, row, column, table }) => (
+          <CustomNumberInput cell={cell} row={row} column={column} table={table} />
+        ),
       },
     ],
     [],
@@ -138,7 +135,9 @@ export const Catalog = () => {
   });
 
   const handleExportData = useCallback(() => {
-    const tableData = catalogTable.getSortedRowModel().rows.map((row) => row.original);
+    const tableData = catalogTable
+      .getSortedRowModel()
+      .rows.map((row) => ({ ...row.original, ...row._valuesCache }));
     const tableJson = JSON.stringify(tableData, null, 2);
     const blob = new Blob([tableJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
