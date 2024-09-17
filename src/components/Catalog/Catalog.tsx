@@ -119,6 +119,8 @@ export const Catalog = () => {
     data,
     enableEditing: true,
     editDisplayMode: 'cell',
+    enableStickyHeader: true,
+    enableStickyFooter: true,
     enableFullScreenToggle: false,
     enableDensityToggle: false,
     enableGlobalFilter: true,
